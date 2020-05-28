@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="CpPGameEngine"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\CppGameEngine\;CMake Files\Fps\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/dra/Desktop/Projects/cpp/GameEngine/CppGameEngine"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/dra/Desktop/Projects/cpp/GameEngine/CppGameEngine/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/dra/Desktop/Projects/cpp/GameEngine/CppGameEngine/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/dra/Desktop/Projects/cpp/GameEngine/CppGameEngine/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/dra/Desktop/Projects/cpp/GameEngine/CppGameEngine/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="CppGameEngine">
+				<Option output="/home/dra/Desktop/Projects/cpp/GameEngine/CppGameEngine/libCppGameEngine.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/dra/Desktop/Projects/cpp/GameEngine/CppGameEngine"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.3.0/../../../../include/c++/9.3.0"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.3.0/../../../../include/c++/9.3.0/x86_64-pc-linux-gnu"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.3.0/../../../../include/c++/9.3.0/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.3.0/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.3.0/include-fixed"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/dra/Desktop/Projects/cpp/GameEngine/CppGameEngine/Makefile&quot;  VERBOSE=1 CppGameEngine"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/dra/Desktop/Projects/cpp/GameEngine/CppGameEngine/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/dra/Desktop/Projects/cpp/GameEngine/CppGameEngine/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/dra/Desktop/Projects/cpp/GameEngine/CppGameEngine/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="CppGameEngine/fast">
+				<Option output="/home/dra/Desktop/Projects/cpp/GameEngine/CppGameEngine/libCppGameEngine.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/dra/Desktop/Projects/cpp/GameEngine/CppGameEngine"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.3.0/../../../../include/c++/9.3.0"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.3.0/../../../../include/c++/9.3.0/x86_64-pc-linux-gnu"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.3.0/../../../../include/c++/9.3.0/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.3.0/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.3.0/include-fixed"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/dra/Desktop/Projects/cpp/GameEngine/CppGameEngine/Makefile&quot;  VERBOSE=1 CppGameEngine/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/dra/Desktop/Projects/cpp/GameEngine/CppGameEngine/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/dra/Desktop/Projects/cpp/GameEngine/CppGameEngine/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/dra/Desktop/Projects/cpp/GameEngine/CppGameEngine/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/dra/Desktop/Projects/cpp/GameEngine/CppGameEngine/Game.cpp">
+			<Option target="CppGameEngine"/>
+		</Unit>
+		<Unit filename="/home/dra/Desktop/Projects/cpp/GameEngine/CppGameEngine/Game.h">
+			<Option target="CppGameEngine"/>
+		</Unit>
+		<Unit filename="/home/dra/Desktop/Projects/cpp/GameEngine/CppGameEngine/Matrix.cpp">
+			<Option target="CppGameEngine"/>
+		</Unit>
+		<Unit filename="/home/dra/Desktop/Projects/cpp/GameEngine/CppGameEngine/Matrix.h">
+			<Option target="CppGameEngine"/>
+		</Unit>
+		<Unit filename="/home/dra/Desktop/Projects/cpp/GameEngine/CppGameEngine/Shader.cpp">
+			<Option target="CppGameEngine"/>
+		</Unit>
+		<Unit filename="/home/dra/Desktop/Projects/cpp/GameEngine/CppGameEngine/Shader.h">
+			<Option target="CppGameEngine"/>
+		</Unit>
+		<Unit filename="/home/dra/Desktop/Projects/cpp/GameEngine/CppGameEngine/Sprite.cpp">
+			<Option target="CppGameEngine"/>
+		</Unit>
+		<Unit filename="/home/dra/Desktop/Projects/cpp/GameEngine/CppGameEngine/Sprite.h">
+			<Option target="CppGameEngine"/>
+		</Unit>
+		<Unit filename="/home/dra/Desktop/Projects/cpp/GameEngine/CppGameEngine/Texture.cpp">
+			<Option target="CppGameEngine"/>
+		</Unit>
+		<Unit filename="/home/dra/Desktop/Projects/cpp/GameEngine/CppGameEngine/Texture.h">
+			<Option target="CppGameEngine"/>
+		</Unit>
+		<Unit filename="/home/dra/Desktop/Projects/cpp/GameEngine/CppGameEngine/Vector3.cpp">
+			<Option target="CppGameEngine"/>
+		</Unit>
+		<Unit filename="/home/dra/Desktop/Projects/cpp/GameEngine/CppGameEngine/Vector3.h">
+			<Option target="CppGameEngine"/>
+		</Unit>
+		<Unit filename="/home/dra/Desktop/Projects/cpp/GameEngine/CppGameEngine/VertexPositionUV.h">
+			<Option target="CppGameEngine"/>
+		</Unit>
+		<Unit filename="/home/dra/Desktop/Projects/cpp/GameEngine/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/home/dra/Desktop/Projects/cpp/GameEngine/CppGameEngine/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\CppGameEngine\"/>
+		</Unit>
+		<Unit filename="/home/dra/Desktop/Projects/cpp/GameEngine/Fps/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\Fps\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
