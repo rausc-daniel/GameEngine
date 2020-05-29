@@ -100,9 +100,6 @@
 		<Unit filename="/home/dra/Desktop/Projects/cpp/GameEngine/CppGameEngine/Texture.h">
 			<Option target="CppGameEngine"/>
 		</Unit>
-		<Unit filename="/home/dra/Desktop/Projects/cpp/GameEngine/CppGameEngine/Vector3.cpp">
-			<Option target="CppGameEngine"/>
-		</Unit>
 		<Unit filename="/home/dra/Desktop/Projects/cpp/GameEngine/CppGameEngine/Vector3.h">
 			<Option target="CppGameEngine"/>
 		</Unit>

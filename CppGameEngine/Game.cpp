@@ -11,8 +11,7 @@ bool Game::spacePressed;
 float Game::xDelta;
 float Game::yDelta;
 
-void OnKeyboard(GLFWwindow* window, int key, int scancode, int action, int mods)
-{
+void OnKeyboard(GLFWwindow *window, int key, int scancode, int action, int mods) {
     if (key == GLFW_KEY_A)
         Game::leftPressed = action != GLFW_RELEASE;
     if (key == GLFW_KEY_W)
@@ -29,26 +28,25 @@ void OnKeyboard(GLFWwindow* window, int key, int scancode, int action, int mods)
 }
 
 float oldPosX, oldPosY;
-void OnMouse(GLFWwindow* window, double posX, double posY)
-{
-    Game::xDelta = oldPosX - posX;
-    Game::yDelta = oldPosY - posY;
-    oldPosX = posX;
-    oldPosY = posY;
+
+void OnMouse(GLFWwindow *window, double posX, double posY) {
+    Game::xDelta = static_cast<float>(oldPosX - posX);
+    Game::yDelta = static_cast<float>(oldPosY - posY);
+    oldPosX = static_cast<float>(posX);
+    oldPosY = static_cast<float>(posY);
 }
 
-Game::Game(const char* title)
-{
-    if (!glfwInit()){
+Game::Game(const char *title) {
+    if (!glfwInit()) {
         printf("GLFW init failed\n");
         exit(1);
     }
-    window = glfwCreateWindow(1280, 720, title, NULL, NULL);
-    if (window == NULL) {
+    window = glfwCreateWindow(1280, 720, title, nullptr, nullptr);
+    if (window == nullptr) {
         printf("GLFW window creation failed\n");
         exit(1);
     }
-    auto glfwWindow = (GLFWwindow*)window;
+    auto glfwWindow = (GLFWwindow *) window;
     glfwMakeContextCurrent(glfwWindow);
     glfwSetInputMode(glfwWindow, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
     glfwSetKeyCallback(glfwWindow, OnKeyboard);
@@ -63,16 +61,13 @@ Game::Game(const char* title)
     }
 }
 
-Game::~Game() 
-{
+Game::~Game() {
     glfwTerminate();
 }
 
-void Game::Run(std::function<void()> renderFunction)
-{
-    auto glwWindow = (GLFWwindow*)window;
-    while (!glfwWindowShouldClose(glwWindow))
-    {
+void Game::Run(const std::function<void()>& renderFunction) {
+    auto glwWindow = (GLFWwindow *) window;
+    while (!glfwWindowShouldClose(glwWindow)) {
         glfwGetWindowSize(glwWindow, &viewportWidth, &viewportHeight);
         glViewport(0, 0, viewportWidth, viewportHeight);
         glClearColor(0, 0, 0, 1);
@@ -86,10 +81,8 @@ void Game::Run(std::function<void()> renderFunction)
     }
 }
 
-void Game::RunTriangle()
-{
-    Run([=]()
-    {
+void Game::RunTriangle() {
+    Run([=]() {
         glBegin(GL_TRIANGLES);
         glColor3f(1.f, 0.f, 0.f);
         glVertex3f(-0.6f, -0.4f, 0.f);

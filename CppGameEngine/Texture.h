@@ -1,13 +1,16 @@
 #pragma once
-#include <GL/gl.h>
 
-class Texture
-{
+#include <GL/gl.h>
+#include <string>
+
+class Texture {
 public:
-	GLuint handle;
-	Texture(const char* filename);
-	~Texture();
-	int width, height;
+    explicit Texture(const char *filename);
+    ~Texture();
+
+    GLuint handle;
+    int width{};
+    int height{};
 private:
-	GLuint Load(const char* filename, int* width, int* height);
+    static GLuint Load(std::string filename, int *width, int *height);
 };

@@ -17,16 +17,6 @@
 					<DistClean command="/usr/bin/make -j8 -f &quot;/home/dra/Desktop/Projects/cpp/GameEngine/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="rebuild_cache">
-				<Option working_dir="/home/dra/Desktop/Projects/cpp/GameEngine"/>
-				<Option type="4"/>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/home/dra/Desktop/Projects/cpp/GameEngine/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/dra/Desktop/Projects/cpp/GameEngine/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/home/dra/Desktop/Projects/cpp/GameEngine/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/home/dra/Desktop/Projects/cpp/GameEngine/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
 			<Target title="install/strip">
 				<Option working_dir="/home/dra/Desktop/Projects/cpp/GameEngine"/>
 				<Option type="4"/>
@@ -52,6 +42,16 @@
 				<Option type="4"/>
 				<MakeCommands>
 					<Build command="/usr/bin/make -j8 -f &quot;/home/dra/Desktop/Projects/cpp/GameEngine/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/dra/Desktop/Projects/cpp/GameEngine/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/dra/Desktop/Projects/cpp/GameEngine/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/dra/Desktop/Projects/cpp/GameEngine/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/dra/Desktop/Projects/cpp/GameEngine"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/dra/Desktop/Projects/cpp/GameEngine/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
 					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/dra/Desktop/Projects/cpp/GameEngine/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/make -j8 -f &quot;/home/dra/Desktop/Projects/cpp/GameEngine/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/make -j8 -f &quot;/home/dra/Desktop/Projects/cpp/GameEngine/Makefile&quot;  VERBOSE=1 clean"/>
@@ -204,9 +204,6 @@
 			<Option target="CppGameEngine"/>
 		</Unit>
 		<Unit filename="/home/dra/Desktop/Projects/cpp/GameEngine/CppGameEngine/Texture.h">
-			<Option target="CppGameEngine"/>
-		</Unit>
-		<Unit filename="/home/dra/Desktop/Projects/cpp/GameEngine/CppGameEngine/Vector3.cpp">
 			<Option target="CppGameEngine"/>
 		</Unit>
 		<Unit filename="/home/dra/Desktop/Projects/cpp/GameEngine/CppGameEngine/Vector3.h">

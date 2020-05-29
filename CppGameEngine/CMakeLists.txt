@@ -8,7 +8,7 @@ include_directories(CppGameEngine /usr/local/include/libpng16)
 
 set(OpenGL_GL_PREFERENCE GLVND)
 
-add_library(CppGameEngine Game.h Game.cpp Matrix.h Matrix.cpp Shader.h Shader.cpp Sprite.h Sprite.cpp Texture.h Texture.cpp Vector3.h Vector3.cpp VertexPositionUV.h)
+add_library(CppGameEngine Game.h Game.cpp Matrix.h Matrix.cpp Shader.h Shader.cpp Sprite.h Sprite.cpp Texture.h Texture.cpp Vector3.h VertexPositionUV.h)
 
 install(TARGETS CppGameEngine
     LIBRARY DESTINATION lib
