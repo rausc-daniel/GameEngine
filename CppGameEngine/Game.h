@@ -1,4 +1,5 @@
-#pragma once
+#ifndef GAME_H
+#define GAME_H
 
 #include <functional>
 
@@ -10,7 +11,7 @@ public:
 
     ~Game();
 
-    void Run(const std::function<void()>& renderFunction);
+    void Run(const std::function<void()> &renderFunction);
 
     void RunTriangle();
 
@@ -29,3 +30,5 @@ public:
 
     float GetTimeDelta() const { return static_cast<float>(timeThisTick); }
 };
+
+#endif

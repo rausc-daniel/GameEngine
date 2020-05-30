@@ -49,7 +49,7 @@ public:
 
     static void DrawCrosshair();
 
-    void DrawVertices(const std::shared_ptr<Shader>& shader, const std::shared_ptr<Texture>& texture, int vertexBuffer,
+    void DrawVertices(const std::shared_ptr<Shader> &shader, const std::shared_ptr<Texture> &texture, int vertexBuffer,
                       int numberOfVertices);
 
     void AddBox(float x, float y) {

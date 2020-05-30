@@ -1,4 +1,5 @@
-#pragma once
+#ifndef VERTEX_POSITION_UV_H
+#define VERTEX_POSITION_UV_H
 
 #include <GL/gl.h>
 
@@ -21,3 +22,5 @@ struct VertexPositionUV {
             const float &u, const float &v) :
             x(x), y(y), z(z), nx(nx), ny(ny), nz(nz), tx(tx), ty(ty), tz(tz), u(u), v(v) {}
 };
+
+#endif

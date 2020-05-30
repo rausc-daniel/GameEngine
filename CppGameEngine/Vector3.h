@@ -1,4 +1,5 @@
-#pragma once
+#ifndef VECTOR3_H
+#define VECTOR3_H
 
 #include <cmath>
 #include <sstream>
@@ -62,3 +63,5 @@ struct Vector3 {
         return result.str();
     }
 };
+
+#endif

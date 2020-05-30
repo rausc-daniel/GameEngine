@@ -1,4 +1,5 @@
-#pragma once
+#ifndef SPRITE_H
+#define SPRITE_H
 
 #include <memory>
 #include <utility>
@@ -24,7 +25,7 @@ public:
 
     int GetHeight() { return texture->height; }
 
-    float DistanceTo(const std::shared_ptr<Sprite>& other, float xOffset) const {
+    float DistanceTo(const std::shared_ptr<Sprite> &other, float xOffset) const {
         float distanceX = abs((float) x + xOffset - static_cast<float>(other->x));
         float distanceY = abs((float) y - static_cast<float>(other->y));
         return sqrt(distanceX * distanceX + distanceY * distanceY);
@@ -33,3 +34,5 @@ public:
 private:
     std::shared_ptr<Texture> texture;
 };
+
+#endif

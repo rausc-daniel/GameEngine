@@ -1,4 +1,5 @@
-#pragma once
+#ifndef MATRIX_H
+#define MATRIX_H
 
 #include "Vector3.h"
 
@@ -48,3 +49,5 @@ struct Matrix {
 
     std::string ToString() const;
 };
+
+#endif
