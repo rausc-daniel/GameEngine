@@ -2,12 +2,15 @@
 
 #include <GL/glew.h>
 #include <GL/gl.h>
-
+#include <string>
+#include <memory>
 class Shader {
 public:
-    Shader(const char *vertexShader, const char *fragmentShader);
+    Shader(const std::string& vertexShader, const std::string& fragmentShader);
 
-    static int CreateShader(GLuint type, const char *&vertexShaderCode);
+    static std::shared_ptr<Shader> Load(const std::string& fileName);
+
+    static int CreateShader(GLuint type, const std::string &shaderCode);
 
     void Use() const;
 
@@ -15,4 +18,6 @@ public:
 
 private:
     GLuint program;
+
+    static std::string GetFileText(const std::string &fileName) ;
 };

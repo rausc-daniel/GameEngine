@@ -1,11 +1,12 @@
 #include "Shader.h"
 #include <cstdio>
+#include <fstream>
 
-Shader::Shader(const char *vertexShaderCode, const char *fragmentShaderCode) {
+Shader::Shader(const std::string &vertexShader, const std::string &fragmentShader) {
     program = glCreateProgram();
-    glAttachShader(program, CreateShader(GL_VERTEX_SHADER, vertexShaderCode));
-    glAttachShader(program, CreateShader(GL_FRAGMENT_SHADER, fragmentShaderCode));
-    glBindAttribLocation(program, 0, "in_Position");
+    glAttachShader(program, CreateShader(GL_VERTEX_SHADER, vertexShader));
+    glAttachShader(program, CreateShader(GL_FRAGMENT_SHADER, fragmentShader));
+    //glBindAttribLocation(program, 0, "in_Position");
     glLinkProgram(program);
 
     char buffer[1000];
@@ -18,9 +19,10 @@ Shader::Shader(const char *vertexShaderCode, const char *fragmentShaderCode) {
         throw error;
 }
 
-int Shader::CreateShader(GLuint type, const char *&vertexOrFragmentShaderCode) {
+int Shader::CreateShader(GLuint type, const std::string &shaderCode) {
+    const char *code = shaderCode.c_str();
     GLuint vertexOrFragmentShader = glCreateShader(type);
-    glShaderSource(vertexOrFragmentShader, 1, &vertexOrFragmentShaderCode, NULL);
+    glShaderSource(vertexOrFragmentShader, 1, &code, NULL);
     glCompileShader(vertexOrFragmentShader);
     GLint status;
     glGetShaderiv(vertexOrFragmentShader, GL_COMPILE_STATUS, &status);
@@ -37,4 +39,16 @@ int Shader::CreateShader(GLuint type, const char *&vertexOrFragmentShaderCode) {
 
 void Shader::Use() const {
     glUseProgram(program);
+}
+
+std::shared_ptr<Shader> Shader::Load(const std::string &fileName) {
+    std::string vert = GetFileText(fileName + ".vert");
+    std::string frag = GetFileText(fileName + ".frag");
+
+    return std::make_shared<Shader>(vert, frag);
+}
+
+std::string Shader::GetFileText(const std::string &fileName) {
+    std::ifstream stream(fileName);
+    return std::string((std::istreambuf_iterator<char>(stream)), std::istreambuf_iterator<char>());
 }

@@ -4,28 +4,28 @@
 #include <libpng16/png.h>
 #include <memory>
 
-Texture::Texture(const char *file_name) {
-    handle = Load(file_name, &width, &height);
+Texture::Texture(const char *fileName) {
+    handle = Load(fileName, &width, &height);
 }
 
 Texture::~Texture() = default;
 
-GLuint Texture::Load(std::string file_name, int *width, int *height) {
+GLuint Texture::Load(std::string fileName, int *width, int *height) {
     // This function was originally written by David Grayson for
     // https://github.com/DavidEGrayson/ahrs-visualizer
 
     png_byte header[8];
 
     FILE *fp;
-    fp = fopen(file_name.c_str(), "rb");
+    fp = fopen(fileName.c_str(), "rb");
     if (fp == nullptr)
-        throw file_name;
+        throw fileName;
 
     // read the header
     fread(header, 1, 8, fp);
 
     if (png_sig_cmp(header, 0, 8)) {
-        fprintf(stderr, "error: %s is not a PNG.\n", file_name.c_str());
+        fprintf(stderr, "error: %s is not a PNG.\n", fileName.c_str());
         fclose(fp);
         return 0;
     }
@@ -83,10 +83,10 @@ GLuint Texture::Load(std::string file_name, int *width, int *height) {
     if (width) { *width = temp_width; }
     if (height) { *height = temp_height; }
 
-    //printf("%s: %lux%lu %d\n", file_name, temp_width, temp_height, color_type);
+
 
     if (bit_depth != 8) {
-        fprintf(stderr, "%s: Unsupported bit depth %d.  Must be 8.\n", file_name.c_str(), bit_depth);
+        fprintf(stderr, "%s: Unsupported bit depth %d.  Must be 8.\n", fileName.c_str(), bit_depth);
         return 0;
     }
 
@@ -99,7 +99,7 @@ GLuint Texture::Load(std::string file_name, int *width, int *height) {
             format = GL_RGBA;
             break;
         default:
-            fprintf(stderr, "%s: Unknown libpng color type %d.\n", file_name.c_str(), color_type);
+            fprintf(stderr, "%s: Unknown libpng color type %d.\n", fileName.c_str(), color_type);
             return 0;
     }
 

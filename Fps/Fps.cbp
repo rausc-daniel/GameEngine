@@ -67,9 +67,6 @@
 		<Unit filename="/home/dra/Desktop/Projects/cpp/GameEngine/Fps/Fps.cpp">
 			<Option target="Fps"/>
 		</Unit>
-		<Unit filename="/home/dra/Desktop/Projects/cpp/GameEngine/Fps/Fps.h">
-			<Option target="Fps"/>
-		</Unit>
 		<Unit filename="/home/dra/Desktop/Projects/cpp/GameEngine/Fps/FpsGame.cpp">
 			<Option target="Fps"/>
 		</Unit>

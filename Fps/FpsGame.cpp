@@ -33,74 +33,10 @@ FpsGame::FpsGame() : Game("Fps") {
     AddBox(0, 0);
     AddBox(2, 1);
 
-    //Load shaders
-    groundShader = std::make_shared<Shader>(
-            // Vertex Shader
-            "#version 330\n"
-            "layout(location = 0) in vec4 vertexPosition_modelspace;\n"
-            "layout(location = 1) in vec3 vertexNormal;\n"
-            "layout(location = 2) in vec3 vertexTangent;\n"
-            "layout(location = 3) in vec2 texCoord;\n"
-            "uniform mat4 worldViewProjection;\n"
-            "uniform float time;\n"
-            "uniform vec3 lightDirection;\n"
-            "out vec3 tangentLightDirection;\n"
-            "out vec2 uv;\n"
-            //"out float brightness;\n"
-            "void main(){\n"
-            "  vec4 pos = vertexPosition_modelspace;\n"
-            //"  pos.z += sin(time+pos.x/7.0+pos.y/5.0);\n"
-            "  uv = texCoord;\n"
-            "  mat3 TBN = transpose(mat3(vertexTangent, cross(vertexNormal, vertexTangent), vertexNormal));\n"
-            "  tangentLightDirection = TBN * lightDirection;\n"
-            "  gl_Position = worldViewProjection * pos;\n"
-            "}",
-            // Pixel Shader
-            "#version 330\n"
-            "uniform sampler2D diffuse;\n"
-            "uniform sampler2D normalMap;\n"
-            "in vec3 tangentLightDirection;\n"
-            "in vec2 uv;\n"
-            "out vec4 color;\n"
-            "uniform float time;\n"
-            "void main() {\n"
-            "  vec3 normal = texture(normalMap, uv).xyz * 2 - 1;\n"
-            "  float brightness = 0.2f + 0.8f * clamp(dot(normal, tangentLightDirection), 0, 1);\n;"
-            "  color = texture(diffuse, uv) * brightness;\n"
-            "}");
-    wallShader = std::make_shared<Shader>(
-            // Vertex Shader
-            "#version 330\n"
-            "layout(location = 0) in vec4 vertexPosition_modelspace;\n"
-            "layout(location = 1) in vec3 vertexNormal;\n"
-            "layout(location = 2) in vec3 vertexTangent;\n"
-            "layout(location = 3) in vec2 texCoord;\n"
-            "uniform mat4 worldViewProjection;\n"
-            "uniform float time;\n"
-            "uniform vec3 lightDirection;\n"
-            "out vec2 uv;\n"
-            "out float brightness;\n"
-            "out float height;\n"
-            "void main(){\n"
-            "  vec4 pos = vertexPosition_modelspace;\n"
-            //"  pos.z += sin(time+pos.x/7.0+pos.y/5.0);\n"
-            "  brightness = 0.2f + 0.8f * clamp(dot(lightDirection, vertexNormal), 0, 1);\n"
-            "  height = pos.z;\n"
-            "  uv = texCoord;\n"
-            "  gl_Position = worldViewProjection * pos;\n"
-            "}",
-            // Pixel Shader
-            "#version 330\n"
-            "uniform sampler2D diffuse;\n"
-            "uniform sampler2D normalMap;\n"
-            "in vec2 uv;\n"
-            "in float brightness;\n"
-            "in float height;\n"
-            "out vec4 color;\n"
-            "void main() {\n"
-            "  vec4 simpleColor = vec4(0.1+height/4.0, 0.8, 0.6, 1);\n"
-            "  color = texture(normalMap, uv)*simpleColor * brightness;\n"
-            "}");
+    // Load shader from disk
+    groundShader = Shader::Load("./Shader/ground");
+    wallShader = Shader::Load("./Shader/wall");
+
     glGenBuffers(1, &groundVertexBuffer);
     glBindBuffer(GL_ARRAY_BUFFER, groundVertexBuffer);
     auto sizeInBytes = sizeof(VertexPositionUV) * groundVertices.size();
@@ -123,7 +59,7 @@ void FpsGame::SetupProjection() {
     float zFar = 100.0f;
     GLfloat aspect = static_cast<float>(viewportWidth) / static_cast<float>(viewportHeight);
     float fov = 60.0f;
-    float fovH = tan(fov * DegreeToRadians / 2.0f) * zNear;
+    float fovH = std::tan(fov * DegreeToRadians / 2.0f) * zNear;
     float fovW = fovH * aspect;
     glFrustum(-fovW, fovW, -fovH, fovH, zNear, zFar);
 
@@ -161,12 +97,13 @@ void FpsGame::Input() {
 }
 
 void FpsGame::CalculateMovement(float angle) {
-    movement.x -= sin(angle * DegreeToRadians) * MovementSpeed * static_cast<float>(timeThisTick);
-    movement.y -= cos(angle * DegreeToRadians) * MovementSpeed * static_cast<float>(timeThisTick);
+    movement.x -= std::sin(angle * DegreeToRadians) * MovementSpeed * static_cast<float>(timeThisTick);
+    movement.y -= std::cos(angle * DegreeToRadians) * MovementSpeed * static_cast<float>(timeThisTick);
 }
 
-void FpsGame::DrawVertices(const std::shared_ptr<Shader>& shader, const std::shared_ptr<Texture>& texture, int vertexBuffer,
-                           int numberOfVertices) {
+void
+FpsGame::DrawVertices(const std::shared_ptr<Shader> &shader, const std::shared_ptr<Texture> &texture, int vertexBuffer,
+                      int numberOfVertices) {
     // Step 1: Assign shader and texture
     shader->Use();
     glEnable(GL_TEXTURE_2D);
@@ -207,13 +144,13 @@ void FpsGame::DrawVertices(const std::shared_ptr<Shader>& shader, const std::sha
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(VertexPositionUV), 0);
     //normal
     glEnableVertexAttribArray(1);
-    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(VertexPositionUV), (void *) (3 * 4));
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(VertexPositionUV), reinterpret_cast<void *>(3 * 4));
     //tangent
     glEnableVertexAttribArray(2);
-    glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, sizeof(VertexPositionUV), (void *) (6 * 4));
+    glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, sizeof(VertexPositionUV), reinterpret_cast<void *>(6 * 4));
     //uv
     glEnableVertexAttribArray(3);
-    glVertexAttribPointer(3, 2, GL_FLOAT, GL_FALSE, sizeof(VertexPositionUV), (void *) (9 * 4));
+    glVertexAttribPointer(3, 2, GL_FLOAT, GL_FALSE, sizeof(VertexPositionUV), reinterpret_cast<void *>(9 * 4));
 
     // Step 5: Finally render with shader and vertexbuffer
     glDrawArrays(GL_QUADS, 0, numberOfVertices);
@@ -238,6 +175,8 @@ void FpsGame::DrawFPS() {
      *  once:
      *      switch back into 3d mode
     */
+
+    printf("%f FPS\n", fps);
 }
 
 void FpsGame::RunGame() {
