@@ -2,7 +2,7 @@
 
 This is a little project where I like to implement different aspects of Game Engines from scratch to better understand the technologies and concepts that drive them. The focus is not on performance or beauty but much rather on knowledge gain and learning to effectively use C++ and its many opportunities.
 
-![Sample Image](https://www.github.com/rausc-daniel/GameEngine/blob/master/img/SampleImage.png)
+![Sample Image](https://github.com/rausc-daniel/GameEngine/blob/master/img/SampleImage.png)
 
 It uses GLFW and GLEW to wrap OpenGL so that I can focus on the Game Engine Parts while still learning enough OpenGL without it becomming the focus of this project due to its verbosity and complexity.
 
